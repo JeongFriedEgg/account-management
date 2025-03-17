@@ -13,7 +13,7 @@ public class CreateUser {
     @Getter
     @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
     public static class Request {
-        private String userId;
+        private String username;
         private String password;
         private String name;
     }
@@ -22,13 +22,13 @@ public class CreateUser {
     @Getter
     @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
     public static class Response {
-        private String userId;
+        private String username;
         private String name;
         private LocalDate createdAt;
 
         public static Response from(UserDto userDto){
             return Response.builder()
-                    .userId(userDto.getUserId())
+                    .username(userDto.getUsername())
                     .name(userDto.getName())
                     .createdAt(userDto.getCreatedAt())
                     .build();
