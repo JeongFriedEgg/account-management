@@ -20,9 +20,9 @@ public class UserController {
             @RequestBody CreateUser.Request createUser
     ) {
         return CreateUser.Response.from(
-                userService.createUser(createUser.getUsername(),
-                        createUser.getPassword(),
-                        createUser.getName())
+                userService.createUser(
+                        CreateUser.Request.toDto(createUser)
+                )
         );
     }
 }

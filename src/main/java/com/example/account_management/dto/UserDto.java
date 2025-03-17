@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @Builder
 public class UserDto {
     private String username;
+    private String password;
     private String name;
     private LocalDate createdAt;
     private LocalDate updatedAt;

@@ -1,5 +1,6 @@
 package com.example.account_management.domain;
 
+import com.example.account_management.dto.UserDto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
@@ -39,4 +40,12 @@ public class User {
     @Column(name = "updated_at")
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate updatedAt;
+
+    public static User toEntity(UserDto userDto) {
+        return User.builder()
+                .username(userDto.getUsername())
+                .password(userDto.getPassword())
+                .name(userDto.getName())
+                .build();
+    }
 }

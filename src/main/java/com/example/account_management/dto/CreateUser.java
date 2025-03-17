@@ -16,6 +16,14 @@ public class CreateUser {
         private String username;
         private String password;
         private String name;
+
+        public static UserDto toDto(Request request) {
+            return UserDto.builder()
+                    .username(request.getUsername())
+                    .password(request.getPassword())
+                    .name(request.getName())
+                    .build();
+        }
     }
 
     @Builder

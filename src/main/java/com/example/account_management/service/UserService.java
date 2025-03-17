@@ -13,19 +13,15 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private final UserRepository userRepository;
 
-    public UserDto createUser(String username, String password, String name) {
-        userRepository.findByUserId(username)
+    public UserDto createUser(UserDto userDto) {
+        userRepository.findByUsername(userDto.getUsername())
                 .ifPresent(user -> {
                     throw new UserAlreadyExistException(ErrorCode.USER_ALREADY_EXISTED);
                 });
 
         return UserDto.fromEntity(
                 userRepository.save(
-                        User.builder()
-                                .username(username)
-                                .password(password)
-                                .name(name)
-                                .build()
+                        User.toEntity(userDto)
                 )
         );
     }
