@@ -17,11 +17,11 @@ public class UserController {
 
     @PostMapping
     public CreateUser.Response createUser(
-            @RequestBody CreateUser.Request createUser
+            @RequestBody CreateUser.Request request
     ) {
         return CreateUser.Response.from(
                 userService.createUser(
-                        CreateUser.Request.toDto(createUser)
+                        CreateUser.Request.toDto(request)
                 )
         );
     }
